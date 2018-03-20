@@ -1,4 +1,5 @@
 <template>
+<div>
   <header>
     <nav class="navbar navbar-dark">
       <router-link to="/" href="#" class="navbar-brand">RClone</router-link>
@@ -23,6 +24,10 @@
       </form>
     </nav>
   </header>
+      <div class="container">
+    <flash-message></flash-message>
+    </div>
+    </div>
 </template>
 
 <script>
@@ -69,7 +74,7 @@
           this.username = res.body.username;
           }
         }).catch( e => {
-          console.log(e);
+          this.flash(e,'error');
         })
       },
       login() {
@@ -85,7 +90,10 @@
               username:this.username,
               userId:res.body.userId
             });
-          });
+          })
+          .catch( e => {
+            this.flash(e,'error');
+          })
       },
       logout() {
         this.$http.headers.common['Authorization'] = '';
@@ -98,6 +106,9 @@
         .then( res => {
           this.boards = res.body;
         })
+        .catch(e => {
+          this.flash(e,'error');
+        })
       },
       keepHeaderUpdated(){
         setInterval(this.fetchBoardNames,5000);
@@ -108,6 +119,9 @@
 </script>
 
 <style scoped>
+.container{
+  margin-top:15px;
+}
 ul{
   display: inline-block;
 }

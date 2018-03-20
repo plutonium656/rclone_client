@@ -184,6 +184,11 @@
 </script>
 
 <style scoped>
+  .container {
+    background-color: #FFFFFF;
+    margin-top: 15px;
+    padding:20px;
+  }
 form{
     margin:15px 0;
 }

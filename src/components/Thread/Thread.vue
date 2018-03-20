@@ -17,7 +17,8 @@
         </div>
       </form>
       <ul class="list-group">
-        <li v-for="(comment,index) in threadData.comments" :key="index" class="list-group-item">{{comment.content | removeUrls}}
+        <li v-for="(comment,index) in threadData.comments" :key="index" class="list-group-item">
+          <p>{{comment.content | removeUrls}}</p>
           <div class="img-thumbnail" v-if="parseImageUrl(comment.content)">
             <a :href="parseImageUrl(comment.content)">
               <img class="" :src="parseImageUrl(comment.content)" alt="Link">
